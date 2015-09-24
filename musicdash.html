@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Dash</title>
+    <style>
+    ul { display: block }
+    iframe { display: block; height: 500px; width: 100%; }
+    h2 { text-align: center; }
+    #main { margin: 0 auto; width: 800px; }
+    </style>
+  </head>
+  <body>
+    <div id=main>
+      <h2>music dash</h2>
+      <iframe name="frame"></iframe>
+      <ul id="tracklist"></ul>
+    </div>
+  </body>
+  <script>
+    var tracks = [];
+
+    var youtubes = [
+      ['e5oXeWglbCE', 'Port Town'],
+      ['XBuXfcFKAlo', 'Mute City'],
+      ['UP45zY2Nrms', 'Ken theme vocal acapella'],
+      ['6g4dkBF5anU', 'One hour of Cisco CallManager Default Hold Music'],
+    ];
+
+    var lorps = [
+      ['jXKz_T5T5f4', 'Zelda faerie music']
+    ];
+
+    for (var i in youtubes) {
+      tracks.push(['http://youtube.com/v/' + youtubes[i][0] + '?autoplay=1', youtubes[i][1]]);
+    }
+
+    for (var i in lorps) {
+      tracks.push(['http://listenonrepeat.com/watch/?v' + lorps[i][0] + '&autoplay=1', lorps[i][1]]);
+    }
+
+    var ul = document.getElementById('tracklist');
+
+    for (var i in tracks) {
+      var li = document.createElement('li');
+      var link = document.createElement('a');
+      var t = document.createTextNode(tracks[i][1]);
+      link.setAttribute('href', tracks[i][0]);
+      link.setAttribute('target', 'frame');
+      link.appendChild(t);
+      li.appendChild(link);
+      ul.appendChild(li);
+    }
+  </script>
+</html>
+
